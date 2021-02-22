@@ -79,6 +79,7 @@ class Room(core_models.TimeStampedModel):
     bedrooms = models.IntegerField()
     baths = models.IntegerField()
     check_in = models.TimeField()
+    check_out = models.TimeField(null=True)
     instant_book = models.BooleanField(default=False)
     host = models.ForeignKey("users.User", on_delete=models.CASCADE)
     room_type = models.ForeignKey("RoomType", on_delete=models.SET_NULL, null=True)
