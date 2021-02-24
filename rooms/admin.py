@@ -7,6 +7,11 @@ class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """
 
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
+
     pass
 
 
@@ -72,7 +77,6 @@ class RoomAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "host",
-        "description",
         "country",
         "city",
         "price",
@@ -84,6 +88,7 @@ class RoomAdmin(admin.ModelAdmin):
         "check_out",
         "instant_book",
         "count_amenities",
+        "count_photos",
     )
 
     list_filter = (
@@ -109,7 +114,11 @@ class RoomAdmin(admin.ModelAdmin):
     def count_amenities(self, obj):
         return obj.amenities.count()
 
+    def count_photos(self, obj):
+        return obj.photos.count()
+
     count_amenities.short_description = "편의시설 갯수"
+    count_photos.short_description = "사진"
 
 
 @admin.register(models.Photo)
