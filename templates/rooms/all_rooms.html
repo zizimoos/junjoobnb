@@ -8,7 +8,18 @@
 {% block content %}
     {% for room in rooms %}
         <h3>{{room.name}}/ {{room.price}}won</h3>
-    {% endfor %} 
+    {% endfor %}
+    <h5>
+        {% if page is not 1 %}
+            <a href="?page={{page|add:-1}}">previous</a>
+        {% endif %}
+                   
+        {{page}} of {{page_count}}
+        
+        {% if not page == page_count  %}
+        <a href="?page={{page|add:1}}">next</a>
+        {% endif %}
+    </h5>     
 {% endblock content %}
     
 
