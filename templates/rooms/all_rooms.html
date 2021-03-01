@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block page_name %}
+    Home
+{% endblock page_name %}
+
+{% block content %}
+    {% for room in rooms %}
+        <h3>{{room.name}}/ {{room.price}}won</h3>
+    {% endfor %} 
+{% endblock content %}
+    
+
+
+
+
+
+
+
+
+    
