@@ -104,6 +104,12 @@ def github_callback(request):
                     name = profile_json.get("name")
                     email = profile_json.get("email")
                     bio = profile_json.get("bio")
+                    # there is no name and no bio in GITHUB
+                    if name is None:
+                        name = username
+                    if bio is None:
+                        bio = ""
+                    # there is no name and no bio in GITHUB
                     try:
                         user = models.User.objects.get(email=email)
                         if user.login_method != models.User.LOGIN_GITHUB:
