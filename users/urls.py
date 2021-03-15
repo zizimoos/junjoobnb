@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.urls import reverse_lazy
 
 app_name = "users"
 
@@ -15,5 +16,7 @@ urlpatterns = [
         "verify/<str:key>/", views.complete_verification, name="complete-verification"
     ),
     path("update-profile/", views.UpdateProfileView.as_view(), name="update"),
+    path("update-passwod/", views.UpdatePasswordView.as_view(), name="password"),
     path("<int:pk>/", views.UserProfileView.as_view(), name="profile"),
+    path("update-password/", views.UpdatePasswordView.as_view(success_url=reverse_lazy("core:home")), name="update-password"),
 ]
